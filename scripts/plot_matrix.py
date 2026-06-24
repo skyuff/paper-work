@@ -199,9 +199,11 @@ def plot_matrix(csv_path: str, output_path: str):
     ax.set_yticklabels(Y_CATEGORIES, fontsize=10)
     ax.set_xlabel("横轴：LLM 补偿静态分析的哪个短板 →", fontsize=12, fontweight="bold")
     ax.set_ylabel("纵轴：对健全性(Soundness)的代价 →", fontsize=12, fontweight="bold")
+    n_total = len(papers)
     ax.set_title("双轴矩阵：LLM + 代码安全论文定位\n"
-                 f"({len(valid)} 篇论文, ★ = 必引锚点, ? = 空白区域)",
-                 fontsize=14, fontweight="bold")
+                 f"({len(valid)}/{n_total} 技术论文有健全性维度;综述/评测/早期 {n_total - len(valid)} 篇不适用)\n"
+                 "★ = 必引锚点, ? = 空白区域",
+                 fontsize=13, fontweight="bold")
 
     # 图例
     legend_patches = [mpatches.Patch(color=c, label=d)
